@@ -1,23 +1,40 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import ProfileHero from '../components/ProfileHero';
 import DashboardNav from '../components/DashboardNav';
+import Tips from '../components/Tips';
 
 const Transactions = () => {
-  return (
-    <div>
-      <Head>
-        <title>My Transactions | Huddle</title>
-        <meta name="description" content="Manage your events and RSVPs" />
-      </Head>
-      <div className="w-full h-full mt-12 text-white black-bg-gradient">
-        <ProfileHero />
+  const [mounted, setMounted] = useState(false);
 
-        <div className="mx-[20px] h-screen text-black block items-center mt-20 md:flex md:mx-0 ">
-          <DashboardNav />
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return (
+    mounted && (
+      <div className='mb-[100px]'>
+        <Head>
+          <title>My Transactions | Huddle</title>
+          <meta name="description" content="Manage your events and RSVPs" />
+        </Head>
+        <div className="w-full h-screen mt-6 text-white black-bg-gradient">
+          <ProfileHero />
+
+          <h1 className="ml-[260px] mt-12 text-black text-2xl font-bold">
+            Your Tips History
+          </h1>
+
+          <div className="mx-[20px] text-black block items-center mt-4 md:flex md:mx-0 ">
+            <DashboardNav />
+
+            <div className="ml-[260px] bg-red flex flex-col">
+              <Tips />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 

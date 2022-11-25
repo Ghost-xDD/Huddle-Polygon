@@ -2,8 +2,18 @@ import React from 'react';
 import { FaRegUserCircle } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
+import getAvatar from '../utils/getAvatars';
 
 const Pin = ({ imgSrc, title, authorName, cid }) => {
+  const generateRandomAvatar = () => {
+    const randomAvatar = Math.floor(Math.random() * 1000);
+    return `https://avatars.dicebear.com/api/bottts/${randomAvatar}.svg`;
+  };
+
+  const separate = authorName.split(',');
+  const setAuthor = separate[0];
+  // console.log(separate);
+
   return (
     <div
       className={`w-full h-full cursor-pointer relative overflow-hidden hover:opacity-90`}
@@ -29,9 +39,11 @@ const Pin = ({ imgSrc, title, authorName, cid }) => {
             {title}
           </h3>
           <div className="flex items-center mt-1">
-            <FaRegUserCircle className="text-2xl text-black font-bold ml-2 rounded-full" />
+            <span className="bg-gray-400 rounded-full">
+              <Image src={generateRandomAvatar()} width={40} height={40} />
+            </span>
             &nbsp;&nbsp;
-            <h6 className="text-md">{authorName}</h6>
+            <h6 className="text-md">{setAuthor}</h6>
           </div>
           <div className="p-3" />
         </div>
