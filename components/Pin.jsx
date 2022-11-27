@@ -5,11 +5,6 @@ import Image from 'next/image';
 import getAvatar from '../utils/getAvatars';
 
 const Pin = ({ imgSrc, title, authorName, cid }) => {
-  const generateRandomAvatar = () => {
-    const randomAvatar = Math.floor(Math.random() * 1000);
-    return `https://avatars.dicebear.com/api/bottts/${randomAvatar}.svg`;
-  };
-
   const separate = authorName.split(',');
   const setAuthor = separate[0];
   // console.log(separate);
@@ -40,7 +35,7 @@ const Pin = ({ imgSrc, title, authorName, cid }) => {
           </h3>
           <div className="flex items-center mt-1">
             <span className="bg-gray-400 rounded-full">
-              <Image src={generateRandomAvatar()} width={40} height={40} />
+              <Image src={getAvatar()} width={40} height={40} />
             </span>
             &nbsp;&nbsp;
             <h6 className="text-md">{setAuthor}</h6>

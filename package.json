@@ -9,17 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@rainbow-me/rainbowkit": "^0.7.2",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
-    "@rainbow-me/rainbowkit": "^0.7.2",
     "ethers": "^5.7.2",
     "lodash.merge": "^4.6.2",
-    "nft.storage": "^7.0.0",
     "next": "13.0.5",
+    "nft.storage": "^7.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
     "react-loading-skeleton": "^3.1.0",
+    "react-spinners": "^0.13.6",
     "react-toastify": "^9.1.1",
     "wagmi": "^0.6.8"
   },

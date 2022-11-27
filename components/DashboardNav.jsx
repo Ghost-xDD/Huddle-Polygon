@@ -23,10 +23,10 @@ const DashboardNav = () => {
   return (
     <>
       <nav
-        className="hidden py-6 items-center h-[300px] w-[250px] absolute left-0 top-0 right-0 pt-[40px] navbar md:mt-[500px] mt-0 md:border-r-2 md:border-black md:block "
+        className="hidden py-6 items-center text-center w-full    navbar md:mt-[0px] mt-0 md:border-b-2 md:border-slate-500 md:block "
         aria-label="Sidebar"
       >
-        <ul className="list-none ml-10 pl-16 flex flex-col sm:flex justify-start items-start gap-6 flex-1">
+        <ul className="list-none bg-red flex flex-row sm:flex justify-center items-center gap-6 flex-1 border mx-[550px] rounded-2xl border-gray-500">
           {navigation.map((item) => (
             <Link
               key={item.name}
@@ -35,7 +35,7 @@ const DashboardNav = () => {
               className={`font-poppins font-normal cursor-pointer text-[16px]  ${
                 router.pathname == item.href
                   ? 'text-white font-semibold  bg-red-800 p-1 px-6 rounded-xl transition-all duration-500'
-                  : 'text-dimWhite px-6 hover:opacity-80'
+                  : 'text-black px-6 hover:opacity-80'
               } `}
             >
               {item.name}
