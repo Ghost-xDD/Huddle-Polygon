@@ -6,7 +6,9 @@ import { BsThreeDots, BsInfoCircle, BsShare } from 'react-icons/bs';
 import { FiUpload } from 'react-icons/fi';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import CommentCard from '../../components/CommentCard';
+import formatAddress from '../../utils/formatAddress';
 import getQuote from '../../utils/getQuote';
+import TipModal from '../../components/TipModal';
 
 const Details = () => {
   const [input, setInput] = useState('');
@@ -15,6 +17,9 @@ const Details = () => {
   const [image, setImage] = useState('');
   const [authorName, setAuthorName] = useState('');
   const [codeHash, setCodeHash] = useState('');
+  const [tipAddress, setTipAddress] = useState('');
+
+  const [showModal, setShowModal] = useState(false);
 
   const [mounted, setMounted] = useState(false);
 
@@ -37,6 +42,8 @@ const Details = () => {
     setComment(input);
     setInput('');
   };
+
+  const handleOnClose = () => setShowModal(false);
 
   useEffect(() => {
     setMounted(true);
@@ -69,6 +76,8 @@ const Details = () => {
     // format authorName
     const separate = data.description.split(',');
     setAuthorName(separate[0]);
+    const authorAddress = formatAddress(separate[1]);
+    setTipAddress(authorAddress);
   };
 
   return (
@@ -130,6 +139,28 @@ const Details = () => {
             <div className="mt-2">
               <p className="italic text-gray-500 w-[500px]">{quote}</p>
             </div>
+
+            <div className="py-4">
+              <p className="text-gray-600 font-bold">
+                Author Address:{' '}
+                <span className="text-md border rounded-md border-gray-300 w-[55%] px-4 bg-gray-200 text-gray-500">
+                  {formatAddress(tipAddress)}...
+                </span>
+              </p>
+            </div>
+
+            <button
+              className=" transition-all duration-500 hover:opacity-80  right-0 mt-2 text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xl text-sm ml-2  py-2"
+              onClick={() => setShowModal(true)}
+            >
+              Send a Tip
+            </button>
+
+            <TipModal
+              onClose={handleOnClose}
+              visible={showModal}
+              authorName={authorName}
+            />
 
             {/* Comment Box */}
             <div className=" items-center justify-center mb-4 mt-4 max-w-lg">

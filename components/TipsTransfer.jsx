@@ -63,6 +63,9 @@ const TipsTransfer = () => {
                 Receiver Address :
               </th>
               <th scope="col" className="py-3 px-6">
+                Receiver Name :
+              </th>
+              <th scope="col" className="py-3 px-6">
                 Tip Amount :
               </th>
               <th scope="col" className="py-3 px-6">

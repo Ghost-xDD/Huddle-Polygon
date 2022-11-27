@@ -13,6 +13,16 @@ input[type='file']::file-selector-button {
     margin-inline-end: 1rem; */
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+/*input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}*/
+
 .clickable-card .clickable-card__link::after {
   content: '';
   position: absolute;
@@ -44,11 +54,7 @@ input[type='file']::file-selector-button {
   border-radius: 10px;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+
 
 .feature-bal {
   background: linear-gradient(

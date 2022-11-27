@@ -15,7 +15,7 @@ const Pin = ({ imgSrc, title, authorName, cid }) => {
     >
       <Image
         src={imgSrc}
-        alt=""
+        alt="pin-images"
         className="w-full h-[400px] object-cover rounded-[30px] transition-all duration-500"
         width={500}
         height={400}
@@ -35,7 +35,12 @@ const Pin = ({ imgSrc, title, authorName, cid }) => {
           </h3>
           <div className="flex items-center mt-1">
             <span className="bg-gray-400 rounded-full">
-              <Image src={getAvatar()} width={40} height={40} />
+              <Image
+                src={getAvatar()}
+                width={40}
+                height={40}
+                alt="profile-image"
+              />
             </span>
             &nbsp;&nbsp;
             <h6 className="text-md">{setAuthor}</h6>

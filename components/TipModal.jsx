@@ -1,22 +1,73 @@
-import { BsSearch } from 'react-icons/bs';
+import React from 'react';
+import { useState } from 'react';
+import { useAccount } from 'wagmi';
 
-const TipModal = () => {
-  const modalStyles = {
-    container: `h-full w-full flex flex-col `,
-    closeX: `w-full h-[50px] flex items-center justify-end mb-[20px]`,
-    title: `text-3xl font-bold flex flex-1 items-center mt-[20px] justify-center mb-[40px]`,
-    content: `flex w-full mb-[30px] text-xl justify-center`,
-    input: `w-[50%] h-[50px] bg-[#f7f6f2] rounded-lg p-[10px] flex mx-auto`,
-    inputBox: `w-full h-full flex items-center justify-center bg-[#f7f6f2] focus:outline-none`,
-    amount: `w-full h-full flex justify-center items-center mt-[20px] font-bold text-3xl`,
-    tipBtn: `w-[20%] h-[50px] bg-[#000] mt-[40px] rounded-lg p-[10px] flex mx-auto text-white justify-center items-center cursor-pointer`,
-    loaderContainer: `w-full h-[500px] flex items-center justify-center`,
-    loader: `w-full h-full flex items-center justify-center`,
-    etherscan: `w-full h-full flex items-center justify-center text-green-500 text-2xl mt-[20px] font-bold cursor-pointer`,
-    success: `w-full h-full flex items-center justify-center text-xl mt-[20px] font-bolder`,
+const TipModal = ({ visible, onClose, authorName }) => {
+  const { isConnected, address } = useAccount();
+
+  const senderAddress = address;
+  // console.log(senderAddress);
+
+  const [receiverAddress, setReceiverAddress] = useState('');
+  const [senderName, setSenderName] = useState('');
+  const [receiverName, setReceiverName] = useState('');
+  const [amount, setAmount] = useState('');
+
+  if (!visible) return null;
+
+  const handleOnClose = (e) => {
+    if (e.target.id === 'container') onClose();
   };
 
-  return <div className="w-full h-full"></div>;
+  return (
+    <div
+      id="container"
+      className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center"
+      onClick={handleOnClose}
+    >
+      <div className="bg-white p-10 rounded-lg w-full mx-[380px] py-24">
+        <h1 className="font-semibold text-center text-xl text-gray-700">
+          Say thank you to {authorName}
+        </h1>
+        <p className="text-center text-2xl text-gray-700 mb-5">😊</p>
+
+        <form className="flex flex-col" noValidate autoComplete="off">
+          <label
+            htmlFor="eventname"
+            className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+          >
+            Your Name:
+          </label>
+          <input
+            type="text"
+            className="border text-sm border-gray-700 p-2 rounded mb-5"
+            placeholder="Please input a name"
+            required
+          />
+          <label
+            htmlFor="eventname"
+            className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+          >
+            Tip Amount:
+          </label>
+          <input
+            id="amount"
+            type="number"
+            min="0.001"
+            step="0.001"
+            className="border border-gray-700 p-2 rounded mb-5 text-sm"
+            placeholder="Amount in MATIC"
+            required
+          />
+        </form>
+        <div className="text-center">
+          <button className="px-5 py-2 bg-red-700 text-white rounded">
+            Send Tip
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default TipModal;

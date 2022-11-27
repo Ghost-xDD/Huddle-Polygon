@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import ProfileHero from '../components/ProfileHero';
 import DashboardNav from '../components/DashboardNav';
+import Nft from '../components/Nft';
 
 const Profile = () => {
   const [mounted, setMounted] = useState(false);
@@ -22,6 +23,9 @@ const Profile = () => {
 
           <div className="mx-[20px]text-black block items-center md:flex md:mx-0 ">
             <DashboardNav />
+          </div>
+          <div className='w-full mt-4'>
+            <Nft />
           </div>
         </div>
       </div>

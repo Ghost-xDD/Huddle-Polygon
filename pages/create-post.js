@@ -4,6 +4,7 @@ import { useAccount } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Switch from '../components/Switch';
 import Head from 'next/head';
+import formatAddress from '../utils/formatAddress';
 import { useRouter } from 'next/router';
 import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -37,14 +38,6 @@ const CreatePost = () => {
     setImage(e.target.files[0]);
     setImageTitle(e.target.files[0].name);
     setImageType(e.target.files[0].type);
-  };
-
-  const formatAddress = (address) => {
-    let addressFormatted;
-    if (address) {
-      addressFormatted = address.slice(0, -5);
-    }
-    return addressFormatted;
   };
 
   const handleSubmit = async (e) => {

@@ -1,5 +1,7 @@
 import React from 'react';
 
+const user = 'James';
+
 const TipsReceiverContent = ({
   senderAddress,
   receiverAddress,
@@ -15,8 +17,9 @@ const TipsReceiverContent = ({
             scope="row"
             className="py-4 my-[20px] px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white cursor-pointer "
           >
-            {senderAddress}
+            <p>{user}</p>
           </th>
+          <td className="py-4 px-6 cursor-pointer">{senderAddress}</td>
           <td className="py-4 px-6 cursor-pointer">{receiverAddress}</td>
           <td className="py-4 px-6 cursor-pointer">{amount} MATIC</td>
           <td className="py-4 px-6 cursor-pointer">{timestamp}</td>

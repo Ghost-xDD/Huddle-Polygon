@@ -1,6 +1,8 @@
 import React from 'react';
 import { BiUser } from 'react-icons/bi';
 
+const receiverName = 'Ademola Adebowale';
+
 const TipsContent = ({
   senderAddress,
   receiverAddress,
@@ -19,6 +21,7 @@ const TipsContent = ({
             {senderAddress}
           </th>
           <td className="py-4 px-6 cursor-pointer">{receiverAddress}</td>
+          <td className="py-4 px-6 cursor-pointer">{receiverName}</td>
           <td className="py-4 px-6 cursor-pointer">{amount} MATIC</td>
           <td className="py-4 px-6 cursor-pointer">{timestamp}</td>
 
