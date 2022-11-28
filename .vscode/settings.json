@@ -1,0 +1,5 @@
+{
+  "solidity.packageDefaultDependenciesDirectory": "",
+  "solidity.packageDefaultDependenciesContractsDirectory": "smart_contracts/node_modules",
+  "solidity.remappings": []
+}
