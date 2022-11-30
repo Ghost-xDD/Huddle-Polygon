@@ -1,6 +1,8 @@
-import React from 'react';
 import Head from 'next/head';
+import { useAccount } from 'wagmi';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { BsThreeDots, BsInfoCircle, BsShare } from 'react-icons/bs';
 import { FiUpload } from 'react-icons/fi';
@@ -8,15 +10,27 @@ import { RiArrowDropDownLine } from 'react-icons/ri';
 import CommentCard from '../../components/CommentCard';
 import formatAddress from '../../utils/formatAddress';
 import getQuote from '../../utils/getQuote';
-import TipModal from '../../components/TipModal';
+// import TipModal from '../../components/TipModal';
+import { ethers } from 'ethers';
+import { config } from '../../constants';
+import huddleABI from '../../constants/huddleABI.json';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const TipModal = dynamic(
+  () => {
+    return import('../../components/TipModal');
+  },
+  { ssr: false }
+);
 
 const Details = () => {
+  const { address, isConnected } = useAccount();
   const [input, setInput] = useState('');
   const [comment, setComment] = useState('');
   const [postTitle, setPostTitle] = useState('');
   const [image, setImage] = useState('');
   const [authorName, setAuthorName] = useState('');
-  const [codeHash, setCodeHash] = useState('');
   const [tipAddress, setTipAddress] = useState('');
 
   const [showModal, setShowModal] = useState(false);
@@ -26,11 +40,21 @@ const Details = () => {
   const router = useRouter();
   // Get url id
   const { id } = router.query;
+
   const firstID = { id };
 
   // Extract URL ID value
-  const imageID = Object.values(firstID)[0];
-  // console.log(imageID);
+  const postId = Object.values(firstID)[0];
+  const tokenUri = 'ipfs://' + postId + '/metadata.json';
+  // console.log(tokenUri);
+
+  const notify = (e) => {
+    e.preventDefault();
+
+    toast.error('Nice Try!! Please connect a Compatible Web3 Wallet', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -48,12 +72,12 @@ const Details = () => {
   useEffect(() => {
     setMounted(true);
 
-    if (imageID) {
+    if (postId) {
       getMetadata();
       getImage();
       // getQuote();
     }
-  }, [imageID]);
+  }, [postId]);
 
   const quote = getQuote();
 
@@ -64,8 +88,8 @@ const Details = () => {
   };
 
   const getMetadata = async () => {
-    let data = await fetch(`https://ipfs.io/ipfs/${imageID}/metadata.json`);
-    console.log(data);
+    let data = await fetch(`https://ipfs.io/ipfs/${postId}/metadata.json`);
+    // console.log(data);
     data = await data.json();
     console.log(data);
     // const [authorName] = data.description;
@@ -76,8 +100,28 @@ const Details = () => {
     // format authorName
     const separate = data.description.split(',');
     setAuthorName(separate[0]);
-    const authorAddress = formatAddress(separate[1]);
+    const authorAddress = separate[1].replace(/\s+/g, '').trim();
+    console.log(authorAddress);
     setTipAddress(authorAddress);
+  };
+
+  const mintNFT = async (e) => {
+    e.preventDefault();
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+
+    const nftContract = new ethers.Contract(
+      config.huddleAddress,
+      huddleABI,
+      signer
+    );
+
+    const mint = await nftContract.mintNFT(address, tokenUri);
+    const receipt = await mint.wait();
+
+    const txHash = await receipt.transactionHash;
+    console.log(txHash);
   };
 
   return (
@@ -124,9 +168,24 @@ const Details = () => {
                   </span>
                 </h3>
 
-                <button className="text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xl text-sm px-4 py-2 hover:opacity-70 transition-all duration-500 animate-bounce hover:animate-none">
-                  Mint
-                </button>
+                {isConnected && (
+                  <button
+                    className="text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xl text-sm px-4 py-2 hover:opacity-70 transition-all duration-500 animate-bounce hover:animate-none"
+                    onClick={mintNFT}
+                  >
+                    Mint
+                  </button>
+                )}
+                {!isConnected && (
+                  <button
+                    type="submit"
+                    className="text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xl text-sm px-4 py-2 hover:opacity-70 transition-all duration-500 animate-bounce hover:animate-none"
+                    onClick={notify}
+                  >
+                    Mint
+                  </button>
+                )}
+                <ToastContainer />
               </div>
             </div>
 
@@ -149,17 +208,19 @@ const Details = () => {
               </p>
             </div>
 
-            <button
+            <motion.button
               className=" transition-all duration-500 hover:opacity-80  right-0 mt-2 text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xl text-sm ml-2  py-2"
+              whileHover={{ scale: 1 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => setShowModal(true)}
             >
               Send a Tip
-            </button>
-
+            </motion.button>
             <TipModal
               onClose={handleOnClose}
               visible={showModal}
               authorName={authorName}
+              tipAddress={tipAddress}
             />
 
             {/* Comment Box */}

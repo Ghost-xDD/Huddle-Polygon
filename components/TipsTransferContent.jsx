@@ -1,14 +1,22 @@
 import React from 'react';
 import { BiUser } from 'react-icons/bi';
 
-const receiverName = 'Ademola Adebowale';
+const status = 'Transferred';
 
-const TipsContent = ({
+const formatTableAddress = (address) => {
+  let addressFormatted;
+  if (address) {
+    addressFormatted = address.slice(0, -19);
+  }
+  return addressFormatted;
+};
+
+const TipsTransferContent = ({
   senderAddress,
   receiverAddress,
+  receiverName,
   amount,
   timestamp,
-  status,
 }) => {
   return (
     <>
@@ -18,9 +26,11 @@ const TipsContent = ({
             scope="row"
             className="py-4 my-[20px] px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white cursor-pointer "
           >
-            {senderAddress}
+            {formatTableAddress(senderAddress)}...
           </th>
-          <td className="py-4 px-6 cursor-pointer">{receiverAddress}</td>
+          <td className="py-4 px-6 cursor-pointer">
+            <span>{formatTableAddress(receiverAddress)}...</span>
+          </td>
           <td className="py-4 px-6 cursor-pointer">{receiverName}</td>
           <td className="py-4 px-6 cursor-pointer">{amount} MATIC</td>
           <td className="py-4 px-6 cursor-pointer">{timestamp}</td>
@@ -36,4 +46,4 @@ const TipsContent = ({
   );
 };
 
-export default TipsContent;
+export default TipsTransferContent;

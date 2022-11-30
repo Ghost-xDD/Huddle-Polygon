@@ -24,7 +24,6 @@ const CreatePost = () => {
   const [postTitle, setPostTitle] = useState('');
   const [authorName, setAuthorName] = useState('');
   const [imageTitle, setImageTitle] = useState('');
-  const [imageDescription, setImageDescription] = useState('');
   const [imageType, setImageType] = useState('');
   const [quotesEnabled, setQuotesEnabled] = useState(false);
 

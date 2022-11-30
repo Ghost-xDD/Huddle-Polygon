@@ -1,10 +1,10 @@
 const hre = require('hardhat');
 
 const main = async () => {
-  // const huddleContractFactory = await hre.ethers.getContractFactory('Huddle');
-  // const huddleContract = await huddleContractFactory.deploy();
-  // await huddleContract.deployed();
-  // console.log('Huddle Contract deployed to:', huddleContract.address);
+  const huddleContractFactory = await hre.ethers.getContractFactory('Huddle');
+  const huddleContract = await huddleContractFactory.deploy();
+  await huddleContract.deployed();
+  console.log('Huddle Contract deployed to:', huddleContract.address);
 
   const huddleTipsContractFactory = await hre.ethers.getContractFactory(
     'HuddleTips'

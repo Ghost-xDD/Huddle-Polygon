@@ -11,9 +11,11 @@
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "@rainbow-me/rainbowkit": "^0.7.2",
+    "axios": "^1.2.0",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "ethers": "^5.7.2",
+    "framer-motion": "^7.6.15",
     "lodash.merge": "^4.6.2",
     "next": "13.0.5",
     "nft.storage": "^7.0.0",

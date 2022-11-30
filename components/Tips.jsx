@@ -1,6 +1,7 @@
 import React from 'react';
 import TipsTransfer from './TipsTransfer';
 import TipsReceiver from './TipsReceiver';
+import dynamic from 'next/dynamic';
 
 import { useState } from 'react';
 
