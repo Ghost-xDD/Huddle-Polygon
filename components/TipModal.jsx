@@ -84,7 +84,7 @@ const TipModal = ({ visible, onClose, authorName, tipAddress }) => {
 
         const parsedAmount = ethers.utils.parseEther(amount);
 
-        setIsLoading(true);
+        // setIsLoading(true);
 
         await window.ethereum.request({
           method: 'eth_sendTransaction',
@@ -98,7 +98,7 @@ const TipModal = ({ visible, onClose, authorName, tipAddress }) => {
           ],
         });
 
-        // setIsLoading(true);
+        setIsLoading(true);
 
         const transactionHash = await tipContract.addToBlockchain(
           receiverAddress,
@@ -107,7 +107,6 @@ const TipModal = ({ visible, onClose, authorName, tipAddress }) => {
           receiverName
         );
 
-        // setIsLoading(true);
         console.log(`Loading - ${transactionHash.hash}`);
         await transactionHash.wait();
         console.log(`Success - ${transactionHash.hash}`);

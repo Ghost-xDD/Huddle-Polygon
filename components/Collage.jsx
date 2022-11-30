@@ -32,7 +32,7 @@ const Collage = () => {
             const getImage = (ipfsURL) => {
               if (!ipfsURL) return;
               ipfsURL = ipfsURL.split('://');
-              return 'https://ipfs.io/ipfs/' + ipfsURL[1];
+              return 'https://gateway.pinata.cloud/ipfs/' + ipfsURL[1];
             };
 
             data.image = await getImage(data.image);
