@@ -8,7 +8,6 @@ import formatAddress from '../utils/formatAddress';
 import { useRouter } from 'next/router';
 import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { apiKey } from '../components/ApiToken';
 
 const apiKeys = process.env.NEXT_PUBLIC_NFTSTORAGE_TOKEN;
 
@@ -60,7 +59,7 @@ const CreatePost = () => {
 
       if (metadata) {
         console.log(metadata);
-       
+
         router.push('/');
       }
     } catch (error) {
