@@ -1,4 +1,4 @@
-const Data = [
+export const Data = [
   {
     id: 1,
     imgSrc:
@@ -162,4 +162,78 @@ const Data = [
   },
 ];
 
-export default Data;
+export const dummyTransactions = [
+  {
+    senderAddress: '0x9848839498885hi4494jj49',
+    receiverAddress: '0x789042084829h4489393p0',
+    amount: 3,
+    timestamp: '20th October, 2021',
+    status: 'Transfered',
+  },
+  {
+    senderAddress: '0x9848839498885hi4494jj49',
+    receiverAddress: '0x789042084829h4489393p0',
+    amount: 1,
+    timestamp: '10th Mar, 2021',
+    status: 'Transfered',
+  },
+  {
+    senderAddress: '0x9848839498885hi4494jj49',
+    receiverAddress: '0x4958893098858590988js',
+    amount: 2,
+    timestamp: '14th Apr, 2021',
+    status: 'Transfered',
+  },
+  {
+    senderAddress: '0x9848839498885hi4494jj49',
+    receiverAddress: '0x23848949498737499948',
+    amount: 2,
+    timestamp: '20th Dec, 2021',
+    status: 'Transfered',
+  },
+  {
+    senderAddress: '0x9848839498885hi4494jj49',
+    receiverAddress: '0x23848949498737499948',
+    amount: 2,
+    timestamp: '20th Dec, 2021',
+    status: 'Transfered',
+  },
+  {
+    senderAddress: '0x9848839498885hi4494jj49',
+    receiverAddress: '0x23848949498737499948',
+    amount: 2,
+    timestamp: '20th Dec, 2021',
+    status: 'Transfered',
+  },
+];
+
+export const dummyReceivers = [
+  {
+    senderAddress: '0x9848839498885hi4494jj49',
+    receiverAddress: '0x789042084829h4489393p0',
+    amount: 3,
+    timestamp: '20th October, 2021',
+    status: 'Received',
+  },
+  {
+    senderAddress: '0x9848839498885hi4494jj49',
+    receiverAddress: '0x789042084829h4489393p0',
+    amount: 1,
+    timestamp: '10th Mar, 2021',
+    status: 'Received',
+  },
+  {
+    senderAddress: '0x9848839498885hi4494jj49',
+    receiverAddress: '0x4958893098858590988js',
+    amount: 2,
+    timestamp: '14th Apr, 2021',
+    status: 'Received',
+  },
+  {
+    senderAddress: '0x9848839498885hi4494jj49',
+    receiverAddress: '0x23848949498737499948',
+    amount: 2,
+    timestamp: '20th Dec, 2021',
+    status: 'Received',
+  },
+];

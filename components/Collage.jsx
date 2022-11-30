@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { apiKey } from './ApiToken';
 import Pin from './Pin';
 import 'react-loading-skeleton/dist/skeleton.css';
 import SkeletonCard from './SkeletonCard';
@@ -16,7 +15,7 @@ const Collage = () => {
         setLoading(true);
         let cids = await fetch('https://api.nft.storage', {
           headers: {
-            Authorization: `Bearer ${apiKey}`,
+            Authorization: `Bearer ${apiKeys}`,
             'Content-Type': 'application/json',
           },
         });

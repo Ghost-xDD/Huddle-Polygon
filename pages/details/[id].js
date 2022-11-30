@@ -8,6 +8,7 @@ import { BsThreeDots, BsInfoCircle, BsShare } from 'react-icons/bs';
 import { FiUpload } from 'react-icons/fi';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import CommentCard from '../../components/CommentCard';
+import MintedModal from '../../components/MintedModal';
 import formatAddress from '../../utils/formatAddress';
 import getQuote from '../../utils/getQuote';
 // import TipModal from '../../components/TipModal';
@@ -34,6 +35,8 @@ const Details = () => {
   const [tipAddress, setTipAddress] = useState('');
 
   const [showModal, setShowModal] = useState(false);
+  const [openMintModal, setOpenMintModal] = useState(false);
+  const [nftHash, setNftHash] = useState('');
 
   const [mounted, setMounted] = useState(false);
 
@@ -68,6 +71,8 @@ const Details = () => {
   };
 
   const handleOnClose = () => setShowModal(false);
+
+  const handleMintOnClose = () => setOpenMintModal(false);
 
   useEffect(() => {
     setMounted(true);
@@ -119,9 +124,12 @@ const Details = () => {
 
     const mint = await nftContract.mintNFT(address, tokenUri);
     const receipt = await mint.wait();
+    console.log(receipt);
 
     const txHash = await receipt.transactionHash;
     console.log(txHash);
+    setNftHash(txHash);
+    setOpenMintModal(true);
   };
 
   return (
@@ -194,6 +202,12 @@ const Details = () => {
                 Uploaded by <span className="font-bold">{authorName}</span>
               </h1>
             </div>
+
+            <MintedModal
+              txHash={nftHash}
+              openMintModal={openMintModal}
+              handleOnClose={handleMintOnClose}
+            />
 
             <div className="mt-2">
               <p className="italic text-gray-500 w-[500px]">{quote}</p>

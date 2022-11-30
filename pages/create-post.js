@@ -10,6 +10,8 @@ import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { apiKey } from '../components/ApiToken';
 
+const apiKeys = process.env.NEXT_PUBLIC_NFTSTORAGE_TOKEN;
+
 const CreatePost = () => {
   // toast.error('Complete all Fields');
   // toast.success('Post uploaded successfully');
@@ -48,7 +50,7 @@ const CreatePost = () => {
     });
 
     try {
-      const client = new NFTStorage({ token: apiKey });
+      const client = new NFTStorage({ token: apiKeys });
       const imageFile = new File([image], imageTitle, { type: imageType });
       const metadata = await client.store({
         name: postTitle,
@@ -58,10 +60,7 @@ const CreatePost = () => {
 
       if (metadata) {
         console.log(metadata);
-        toast('Post Successfully Uploaded', {
-          className: 'success-toast',
-          draggable: true,
-        });
+       
         router.push('/');
       }
     } catch (error) {

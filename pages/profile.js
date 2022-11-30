@@ -24,7 +24,7 @@ const Profile = () => {
           <div className="mx-[20px]text-black block items-center md:flex md:mx-0 ">
             <DashboardNav />
           </div>
-          <div className='w-full mt-4'>
+          <div className="w-full mt-4">
             <Nft />
           </div>
         </div>

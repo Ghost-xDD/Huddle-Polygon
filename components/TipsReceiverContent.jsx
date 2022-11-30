@@ -1,13 +1,21 @@
 import React from 'react';
 
-const user = 'James';
+const status = 'Received';
+
+const formatTableAddress = (address) => {
+  let addressFormatted;
+  if (address) {
+    addressFormatted = address.slice(0, -19);
+  }
+  return addressFormatted;
+};
 
 const TipsReceiverContent = ({
   senderAddress,
   receiverAddress,
+  senderName,
   amount,
   timestamp,
-  status,
 }) => {
   return (
     <>
@@ -17,10 +25,16 @@ const TipsReceiverContent = ({
             scope="row"
             className="py-4 my-[20px] px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white cursor-pointer "
           >
-            <p>{user}</p>
+            <p>{senderName}</p>
           </th>
-          <td className="py-4 px-6 cursor-pointer">{senderAddress}</td>
-          <td className="py-4 px-6 cursor-pointer">{receiverAddress}</td>
+          <td className="py-4 px-6 cursor-pointer">
+            {formatTableAddress(senderAddress)}
+            <span className="font-bold text-black">...</span>
+          </td>
+          <td className="py-4 px-6 cursor-pointer">
+            {formatTableAddress(receiverAddress)}
+            <span className="font-bold text-black">...</span>
+          </td>
           <td className="py-4 px-6 cursor-pointer">{amount} MATIC</td>
           <td className="py-4 px-6 cursor-pointer">{timestamp}</td>
 
