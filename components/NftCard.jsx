@@ -1,4 +1,10 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { ethers } from 'ethers';
+import { config } from '../constants';
+import { useAccount } from 'wagmi';
+import huddleABI from '../constants/huddleABI.json';
+import { motion } from 'framer-motion';
+import TransferNftModal from '../components/TransferNftModal';
 
 const formatAddresses = (address) => {
   let addressFormatted;
@@ -11,9 +17,11 @@ const formatAddresses = (address) => {
 };
 
 const NftCard = ({ image, title, tokenId, contractAddress }) => {
-  // const separate = title.split(',');
-  // const setTitle = separate[0];
-  //   console.log(image, title);
+  const [showModal, setShowModal] = useState(false);
+
+  const formattedToken = formatAddresses(tokenId);
+
+  const handleOnClose = () => setShowModal(false);
 
   return (
     <div
@@ -38,9 +46,18 @@ const NftCard = ({ image, title, tokenId, contractAddress }) => {
               <p className="bg-gray-400 text-sm p-1 rounded-md font-bold mt-1">
                 Contract Address: {formatAddresses(contractAddress)}
               </p>
-              <button className=" transition-all duration-500 hover:opacity-80  right-0 mt-2 text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xl text-sm ml-2  py-2 ">
+              <motion.button
+                className=" transition-all duration-500 hover:opacity-80  right-0 mt-2 text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xl text-sm ml-2  py-2 "
+                onClick={() => setShowModal(true)}
+              >
                 Transfer NFT
-              </button>
+              </motion.button>
+              <TransferNftModal
+                onClose={handleOnClose}
+                visible={showModal}
+                tokenId={tokenId}
+                formattedToken={formattedToken}
+              />
             </div>
 
             {/* <h6 className="text-md">Charles</h6> */}

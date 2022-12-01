@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useAccount } from 'wagmi';
-import axios from 'axios';
-
 import NftCard from './NftCard';
 
 const Nft = () => {

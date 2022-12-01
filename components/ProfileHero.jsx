@@ -38,7 +38,7 @@ const ProfileHero = () => {
   return (
     <section className={` bg-white md:flex-row flex-col ${styles.paddingY}`}>
       <div
-        className={`feature-bal rounded-none mx-0 block items-center justify-between flex-1 ${styles.flexStart} flex-col gap-6 py-10 md:flex-row md:mx-[100px] md:rounded-2xl xl:px-0 sm:px-32 px-6`}
+        className={`bg-header rounded-none mx-0 block items-center justify-between flex-1 ${styles.flexStart} flex-col gap-6 py-10 md:flex-row md:mx-[100px] md:rounded-2xl xl:px-0 sm:px-32 px-6`}
       >
         <div className='pl-5'>
           <SmallRectangle />

@@ -13,8 +13,8 @@ input[type='file']::file-selector-button {
     margin-inline-end: 1rem; */
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   opacity: 1;
 }
 
@@ -54,14 +54,11 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 10px;
 }
 
-
-
 .feature-bal {
   background: linear-gradient(
     90deg,
-    rgba(85, 85, 85, 0.7875525210084033) 0%,
-    rgba(85, 85, 85, 1) 85%,
-    rgba(85, 85, 85, 1) 100%
+    rgba(205, 16, 33, 1) 0%,
+    rgba(194, 58, 58, 0.7371323529411764) 100%
   );
 }
 
@@ -113,4 +110,47 @@ input[type=number]::-webkit-outer-spin-button {
 
 .react-switch-label:active .react-switch-button {
   width: 60px;
+}
+
+.bg-header {
+  background: linear-gradient(96deg, #8b0000, #555555);
+  background-size: 400% 400%;
+
+  -webkit-animation: huddle-header 59s ease infinite;
+  -moz-animation: huddle-header 59s ease infinite;
+  animation: huddle-header 59s ease infinite;
+}
+
+@-webkit-keyframes huddle-header {
+  0% {
+    background-position: 0% 52%;
+  }
+  50% {
+    background-position: 100% 49%;
+  }
+  100% {
+    background-position: 0% 52%;
+  }
+}
+@-moz-keyframes huddle-header {
+  0% {
+    background-position: 0% 52%;
+  }
+  50% {
+    background-position: 100% 49%;
+  }
+  100% {
+    background-position: 0% 52%;
+  }
+}
+@keyframes huddle-header {
+  0% {
+    background-position: 0% 52%;
+  }
+  50% {
+    background-position: 100% 49%;
+  }
+  100% {
+    background-position: 0% 52%;
+  }
 }
