@@ -24,7 +24,7 @@ const Collage = () => {
         for (let cid of cids.value) {
           if (cid?.cid) {
             let data = await fetch(
-              `https://ipfs.io/ipfs/${cid.cid}/metadata.json`
+              `https://cloudflare-ipfs.com/ipfs/${cid.cid}/metadata.json`
             );
             data = await data.json();
             console.log(data);
