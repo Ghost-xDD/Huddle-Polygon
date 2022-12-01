@@ -29,12 +29,6 @@ const Collage = () => {
             data = await data.json();
             console.log(data);
 
-            const getImage = (ipfsURL) => {
-              if (!ipfsURL) return;
-              ipfsURL = ipfsURL.split('://');
-              return 'https://cloudflare-ipfs.com/ipfs/' + ipfsURL[1];
-            };
-
             data.image = await getImage(data.image);
             data.cid = cid.cid;
             data.created = cid.created;
@@ -50,6 +44,12 @@ const Collage = () => {
     };
     loadImages();
   }, []);
+
+  const getImage = async (ipfsURL) => {
+    if (!ipfsURL) return;
+    ipfsURL = ipfsURL.split('://');
+    return 'https://cloudflare-ipfs.com/ipfs/' + ipfsURL[1];
+  };
 
   return (
     <div className="gap-4 columns-2 md:gap-4 sm:columns-5">
