@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['ipfs.io', 'avatars.dicebear.com'],
+    domains: ['ipfs.io', 'avatars.dicebear.com', 'gateway.pinata.cloud'],
   },
 };
 

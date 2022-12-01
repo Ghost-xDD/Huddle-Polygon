@@ -16,7 +16,7 @@ const Profile = () => {
       <div>
         <Head>
           <title>My Profile | Huddle</title>
-          <meta name="description" content="Manage your events and RSVPs" />
+          <meta name="description" content="Decentralized Pins" />
         </Head>
         <div className="w-full h-full mt-12 text-white black-bg-gradient">
           <ProfileHero />

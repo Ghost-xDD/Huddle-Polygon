@@ -13,7 +13,7 @@ const Pin = ({ imgSrc, title, authorName, cid }) => {
     <div
       className={`w-full h-full cursor-pointer relative overflow-hidden hover:opacity-90`}
     >
-      <img
+      <Image
         src={imgSrc}
         alt="pin-images"
         className="w-full h-[400px] object-cover rounded-[30px] transition-all duration-500"
