@@ -89,11 +89,11 @@ const Details = () => {
   const getImage = (ipfsURL) => {
     if (!ipfsURL) return;
     ipfsURL = ipfsURL.split('://');
-    return 'https://gateway.pinata.cloud/ipfs/' + ipfsURL[1];
+    return 'https://nftstorage.link/ipfs/' + ipfsURL[1];
   };
 
   const getMetadata = async () => {
-    let data = await fetch(`https://ipfs.io/ipfs/${postId}/metadata.json`);
+    let data = await fetch(`https://nftstorage.link/ipfs/${postId}/metadata.json`);
     // console.log(data);
     data = await data.json();
     console.log(data);

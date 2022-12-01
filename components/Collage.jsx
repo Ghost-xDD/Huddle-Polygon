@@ -24,7 +24,7 @@ const Collage = () => {
         for (let cid of cids.value) {
           if (cid?.cid) {
             let data = await fetch(
-              `https://cloudflare-ipfs.com/ipfs/${cid.cid}/metadata.json`
+              `https://nftstorage.link/ipfs/${cid.cid}/metadata.json`
             );
             data = await data.json();
             console.log(data);
@@ -48,7 +48,7 @@ const Collage = () => {
   const getImage = async (ipfsURL) => {
     if (!ipfsURL) return;
     ipfsURL = ipfsURL.split('://');
-    return 'https://cloudflare-ipfs.com/ipfs/' + ipfsURL[1];
+    return 'https://nftstorage.link/ipfs/' + ipfsURL[1];
   };
 
   return (
