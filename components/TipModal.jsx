@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import huddleTipsAbi from '../constants/huddleTips.json';
 import { IoMdCheckmarkCircle } from 'react-icons/io';
 import { GridLoader } from 'react-spinners';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const dropIn = {
   hidden: {
@@ -44,6 +46,14 @@ const TipModal = ({ visible, onClose, authorName, tipAddress }) => {
   const senderAddress = address;
   const receiverAddress = tipAddress;
   const receiverName = authorName;
+
+  const notify = (e) => {
+    e.preventDefault();
+
+    toast.error('Nice Try!! Please connect a Compatible Web3 Wallet', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
 
   useEffect(() => {
     if (!window.ethereum) return;
@@ -196,14 +206,26 @@ const TipModal = ({ visible, onClose, authorName, tipAddress }) => {
                     onChange={(e) => setAmount(e.target.value)}
                   />
                 </form>
-                <div className="text-center">
-                  <button
-                    className="px-5 py-2 bg-red-700 text-white rounded"
-                    onClick={handleTipAuthor}
-                  >
-                    Send Tip
-                  </button>
-                </div>
+                {!isConnected && (
+                  <div className="text-center">
+                    <button
+                      className="px-5 py-2 bg-red-700 text-white rounded"
+                      onClick={notify}
+                    >
+                      Send Tip
+                    </button>
+                  </div>
+                )}
+                {isConnected && (
+                  <div className="text-center">
+                    <button
+                      className="px-5 py-2 bg-red-700 text-white rounded"
+                      onClick={handleTipAuthor}
+                    >
+                      Send Tip
+                    </button>
+                  </div>
+                )}
               </>
             )}
           </div>

@@ -11,7 +11,6 @@ import CommentCard from '../../components/CommentCard';
 import MintedModal from '../../components/MintedModal';
 import formatAddress from '../../utils/formatAddress';
 import getQuote from '../../utils/getQuote';
-// import TipModal from '../../components/TipModal';
 import { ethers } from 'ethers';
 import { config } from '../../constants';
 import huddleABI from '../../constants/huddleABI.json';
@@ -28,8 +27,6 @@ const TipModal = dynamic(
 
 const Details = () => {
   const { address, isConnected } = useAccount();
-  const [input, setInput] = useState('');
-  const [comment, setComment] = useState('');
   const [postTitle, setPostTitle] = useState('');
   const [image, setImage] = useState('');
   const [authorName, setAuthorName] = useState('');
@@ -60,10 +57,10 @@ const Details = () => {
     });
   };
 
-  const handleChange = (e) => {
-    setInput(e.target.value);
-    console.log(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   setInput(e.target.value);
+  //   console.log(e.target.value);
+  // };
 
   const handleOnClose = () => setShowModal(false);
 
@@ -119,12 +116,21 @@ const Details = () => {
       signer
     );
 
+    const mintNotification = toast.loading('Please wait! Minting your NFT');
+
     const mint = await nftContract.mintNFT(address, tokenUri, {
       maxFeePerGas: '30000000000',
       maxPriorityFeePerGas: '30000000000',
     });
     const receipt = await mint.wait();
     console.log(receipt);
+
+    toast.update(mintNotification, {
+      render: 'Mint Completed Successfully',
+      type: 'success',
+      isLoading: false,
+      autoClose: 7000,
+    });
 
     const txHash = await receipt.transactionHash;
     console.log(txHash);
@@ -193,7 +199,7 @@ const Details = () => {
                     Mint
                   </button>
                 )}
-                <ToastContainer />
+                <ToastContainer autoClose={1000} />
               </div>
             </div>
 

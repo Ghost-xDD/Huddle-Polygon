@@ -6,7 +6,7 @@ import Switch from '../components/Switch';
 import Head from 'next/head';
 import formatAddress from '../utils/formatAddress';
 import { useRouter } from 'next/router';
-import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const apiKeys = process.env.NEXT_PUBLIC_NFTSTORAGE_TOKEN;
@@ -43,10 +43,7 @@ const CreatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    toast('Uploading Post', {
-      className: 'info-toast',
-      draggable: true,
-    });
+    const mintNotification = toast.loading('Uploading your post! Hold On');
 
     try {
       const client = new NFTStorage({ token: apiKeys });
@@ -58,6 +55,12 @@ const CreatePost = () => {
       });
 
       if (metadata) {
+        toast.update(mintNotification, {
+          render: 'Post Upload Successful',
+          type: 'success',
+          isLoading: false,
+          autoClose: 7000,
+        });
         console.log(metadata);
 
         router.push('/');
@@ -238,6 +241,7 @@ const CreatePost = () => {
                   >
                     Submit
                   </button>
+                  <ToastContainer autoClose={1000} />
                 </form>
               </div>
             </section>

@@ -28,7 +28,7 @@ const Tips = () => {
           signer
         );
 
-        const allTips = await tipContract.getAllTransactions();
+         const allTips = await tipContract.getAllTransactions();
 
         const formatAllTips = allTips.map((transfers) => ({
           receiverAddress: transfers.receiver,

@@ -4,6 +4,7 @@ import { config } from '../constants';
 import { useAccount } from 'wagmi';
 import { BsInfoCircle } from 'react-icons/bs';
 import huddleCommentsAbi from '../constants/huddleCommentsABI.json';
+import { RiseLoader } from 'react-spinners';
 import CommentCard from './CommentCard';
 
 const Comments = ({ slug }) => {
@@ -32,7 +33,7 @@ const Comments = ({ slug }) => {
       ...comment,
     }));
 
-    // console.log(formatComments);
+    console.log(formatComments);
     setCommentList(formatComments);
     setLoading(false);
   };
@@ -56,13 +57,14 @@ const Comments = ({ slug }) => {
     const tx = await sendComment.wait();
     console.log(tx);
     setMessage('');
+    window.location.reload;
   };
 
   useEffect(() => {
     if (slug) {
       getComments();
     }
-  }, [slug, addComments]);
+  }, [slug]);
 
   return (
     <div className=" items-center justify-center mb-4 mt-4 max-w-lg">
@@ -94,19 +96,28 @@ const Comments = ({ slug }) => {
                 type="submit"
                 className="bg-red-700 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:opacity-90 cursor-pointer"
                 value="Post Comment"
+                disabled={!message}
                 onClick={addComments}
               />
             </div>
           </div>
         </div>
       </form>
-      {commentList.map((comment, index) => (
-        <CommentCard
-          key={comment.id}
-          message={comment.message}
-          sender={comment.creator_address}
-        />
-      ))}
+      {loading && (
+        <div className="text-black text-center flex w-full items-center py-10">
+          <h1 className="mb-6 text-xl">Loading Your Transferred Tips</h1>
+          <RiseLoader size={20} color="#CD1021" />{' '}
+        </div>
+      )}
+      {!loading &&
+        commentList.map((comment) => (
+          <CommentCard
+            key={comment.id}
+            message={comment.message}
+            sender={comment.creator_address}
+            timestamp={comment.created_at}
+          />
+        ))}
     </div>
   );
 };
