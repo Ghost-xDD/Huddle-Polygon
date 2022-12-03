@@ -13,7 +13,7 @@ const Tips = () => {
   const [tips, setTips] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const { address, isConnected } = useAccount();
+  const { isConnected } = useAccount();
 
   const getAllTips = async () => {
     try {
@@ -28,7 +28,7 @@ const Tips = () => {
           signer
         );
 
-         const allTips = await tipContract.getAllTransactions();
+        const allTips = await tipContract.getAllTransactions();
 
         const formatAllTips = allTips.map((transfers) => ({
           receiverAddress: transfers.receiver,

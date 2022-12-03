@@ -105,7 +105,7 @@ const Comments = ({ slug }) => {
       </form>
       {loading && (
         <div className="text-black text-center flex w-full items-center py-10">
-          <h1 className="mb-6 text-xl">Loading Your Transferred Tips</h1>
+          <h1 className="mb-6 text-xl">Loading Comments</h1>
           <RiseLoader size={20} color="#CD1021" />{' '}
         </div>
       )}
