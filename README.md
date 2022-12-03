@@ -3,10 +3,15 @@
 Huddle is a decentralized social media and image sharing platform like pinterest / unsplash where users can find and share ideas to spark inspiration, and interact with a community of like minded people.
 
 ## Problem
-- In Nov 29, Pinterest shutdown it's creators rewards program that was meant to enable fans support their favorite creators with tips. Thousands of creators that were earning with the programme now have no way of receiving donations.
+- Censorship: In traditional web2 social apps, users have little to no control over how their data is managed. 
+- Last Week, Pinterest [shutdown it's creators rewards program](https://techcrunch.com/2022/11/30/pinterest-shuts-down-its-creator-rewards-program/) that was meant to enable fans support their favorite creators with tips. Thousands of creators that were earning with the programme now have no way of receiving donations.
 
 ## Our Solution
-- With Huddle, Creators can receive tips from fans of their content directly to their wallet without any secondary intermediary. This reduces the level of trust, responsibility and dependency on a centralized entity.
+- We create a platform where users can express their creative prowess freely without fear of their content being taken down.
+- All user content are saved directly on IPFS, so no one central entity has control over how user data is managed.
+- Users have the option to remain anonymous while creating quality content
+- With Huddle, Creators can receive tips from fans of their content directly to their wallet without any secondary intermediary. They don't have to be bothered by a payment program shutting down. This reduces the level of trust, responsibility and dependency on a centralized entity.
+- All transactions are transparent as they can easily be viewed on the blockchain.
 
 ## Tech Stack
 - React (Next.js) & TailwindCSS for the frontend
