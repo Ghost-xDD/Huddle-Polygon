@@ -61,9 +61,9 @@ const TipsTransfer = ({ tips, isLoading }) => {
                   />
                 ))}
 
-              {/* <div className={!transferredTips ? 'hidden' : 'block'}>
+              <div className={!transferredTips ? 'hidden' : 'block'}>
                 <h1>You currently have no transfered Tips</h1>
-              </div> */}
+              </div>
             </table>
           </div>
         </div>

@@ -56,6 +56,10 @@ const TipsReceiver = ({ tips, isLoading }) => {
                 senderName={data.senderName}
               />
             ))}
+
+          <div className={!receivedTips ? 'hidden' : 'block'}>
+            <h1>You currently have no transfered Tips</h1>
+          </div>
         </table>
       </div>
     </div>

@@ -44,7 +44,7 @@ const MintedModal = ({ txHash, openMintModal, handleOnClose }) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500 font-serif">
-                      You can now proceed to confirm your NFT transaction on
+                     Post has been minted to your profile. You can now proceed to verify your NFT transaction on
                       Polygonscan
                     </p>
                   </div>
