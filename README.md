@@ -18,15 +18,24 @@ Huddle is a decentralized social media and image sharing platform like pinterest
 - Ethers.js & Hardhat for testing & deploying smart contracts
 
 ## Verified Smart Contracts Links (Polygon Mumbai)
-- Huddle: https://mumbai.polygonscan.com/address/0x9EA38BFCC3c3b4E3C1a8FC1d861D05c11Fb49a14
+- Huddle (ERC 721): https://mumbai.polygonscan.com/address/0x9EA38BFCC3c3b4E3C1a8FC1d861D05c11Fb49a14
+  - Allow any of the platform's users to mint a post to their profile
 - Huddle Tips: https://mumbai.polygonscan.com/address/0x5031c474Bbea0c5aced442BC250533fb02b66482
+  - Sends and saves all users tip transactions on the Polygon Mumbai Testnet
+  - Gets the total transaction count
 - Huddle Comments: https://mumbai.polygonscan.com/address/0x6f9798263B48C42a322cF19363EA1B8B3b2b0824
+  - allows users to add comments to any particular post
+  - takes in a specific page's slug to get all user comments for that particular post
 
 ## User Interface
 ### Home Page
 - This is the landing page of the app. All the different posts made by different creators are directly populated from IPFS to the user.
 
 ![homepage](https://user-images.githubusercontent.com/42726051/205458942-adf0d2ae-245b-4eef-8043-1d433a4ac4ae.JPG)
+
+## Create Post
+
+![create-post](https://user-images.githubusercontent.com/42726051/205462125-24ac4a83-0878-4475-b458-18182241747e.JPG)
 
 ### Post Detail Page
 - Here, the users can see more details about a specific post 
