@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Pin from './Pin';
 import 'react-loading-skeleton/dist/skeleton.css';
-import SkeletonCard from './SkeletonCard';
+import SkeletonCard from './skeletons/SkeletonCard';
 
 const Collage = () => {
   const [imageData, setImageData] = useState([]);

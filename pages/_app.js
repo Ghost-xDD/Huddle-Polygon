@@ -6,6 +6,7 @@ import {
   lightTheme,
 } from '@rainbow-me/rainbowkit';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
+import { QueryClient, QueryClientProvider, QueryCache } from 'react-query';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import Layout from '../components/Layout';
@@ -40,13 +41,30 @@ const myTheme = merge(lightTheme(), {
   },
 });
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+  queryCache: new QueryCache({
+    onError: () => {
+      toast.error(
+        'Network Error: Ensure MetaMask is connected to the same network that your contract is deployed to.'
+      );
+    },
+  }),
+});
+
 function MyApp({ Component, pageProps }) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains} theme={myTheme} coolMode>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <QueryClientProvider client={queryClient}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </QueryClientProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

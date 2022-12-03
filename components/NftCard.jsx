@@ -21,6 +21,8 @@ const NftCard = ({ image, title, tokenId, contractAddress }) => {
 
   const formattedToken = formatAddresses(tokenId);
 
+  // const huddleContract = config.huddleAddress;
+
   const handleOnClose = () => setShowModal(false);
 
   return (

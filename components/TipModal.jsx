@@ -92,7 +92,8 @@ const TipModal = ({ visible, onClose, authorName, tipAddress }) => {
             {
               from: senderAddress,
               to: receiverAddress,
-              gas: '0x5208',
+              maxFeePerGas: '1000000000',
+              maxPriorityFeePerGas: '1000000000',
               value: parsedAmount._hex,
             },
           ],
@@ -104,7 +105,11 @@ const TipModal = ({ visible, onClose, authorName, tipAddress }) => {
           receiverAddress,
           parsedAmount,
           senderName,
-          receiverName
+          receiverName,
+          {
+            maxFeePerGas: '30000000000',
+            maxPriorityFeePerGas: '30000000000',
+          }
         );
 
         console.log(`Loading - ${transactionHash.hash}`);

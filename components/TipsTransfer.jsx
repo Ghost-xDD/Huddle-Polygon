@@ -1,8 +1,9 @@
 import { useAccount } from 'wagmi';
 import TipsTransferContent from './TipsTransferContent';
+import { RiseLoader } from 'react-spinners';
 
-const TipsTransfer = ({ tips }) => {
-  const { address } = useAccount();
+const TipsTransfer = ({ tips, isLoading }) => {
+  const { address, isConnected } = useAccount();
 
   const transferredTips = tips.filter((tip) => address === tip.senderAddress);
   console.log(transferredTips);
@@ -40,16 +41,29 @@ const TipsTransfer = ({ tips }) => {
                   </th>
                 </tr>
               </thead>
-              {transferredTips.map((data, index) => (
-                <TipsTransferContent
-                  key={index}
-                  senderAddress={data.senderAddress}
-                  receiverAddress={data.receiverAddress}
-                  receiverName={data.receiverName}
-                  amount={data.amount}
-                  timestamp={data.timestamp}
-                />
-              ))}
+              {isLoading && (
+                <div className="text-black text-center flex w-full items-center py-10">
+                  <h1 className="mb-6 text-xl">
+                    Loading Your Transferred Tips
+                  </h1>
+                  <RiseLoader size={20} color="#CD1021" />{' '}
+                </div>
+              )}
+              {!isLoading &&
+                transferredTips.map((data, index) => (
+                  <TipsTransferContent
+                    key={index}
+                    senderAddress={data.senderAddress}
+                    receiverAddress={data.receiverAddress}
+                    receiverName={data.receiverName}
+                    amount={data.amount}
+                    timestamp={data.timestamp}
+                  />
+                ))}
+
+              {/* <div className={!transferredTips ? 'hidden' : 'block'}>
+                <h1>You currently have no transfered Tips</h1>
+              </div> */}
             </table>
           </div>
         </div>

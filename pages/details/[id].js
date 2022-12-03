@@ -17,6 +17,7 @@ import { config } from '../../constants';
 import huddleABI from '../../constants/huddleABI.json';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Comments from '../../components/Comments';
 
 const TipModal = dynamic(
   () => {
@@ -64,12 +65,6 @@ const Details = () => {
     console.log(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setComment(input);
-    setInput('');
-  };
-
   const handleOnClose = () => setShowModal(false);
 
   const handleMintOnClose = () => setOpenMintModal(false);
@@ -93,7 +88,9 @@ const Details = () => {
   };
 
   const getMetadata = async () => {
-    let data = await fetch(`https://nftstorage.link/ipfs/${postId}/metadata.json`);
+    let data = await fetch(
+      `https://nftstorage.link/ipfs/${postId}/metadata.json`
+    );
     // console.log(data);
     data = await data.json();
     console.log(data);
@@ -236,48 +233,7 @@ const Details = () => {
               authorName={authorName}
               tipAddress={tipAddress}
             />
-
-            {/* Comment Box */}
-            <div className=" items-center justify-center mb-4 mt-4 max-w-lg">
-              <form className="w-full max-w-xl bg-white rounded-lg  pt-2">
-                <div className="flex flex-wrap -mx-3 mb-6">
-                  {/* <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">
-                  Add a Comment
-                </h2> */}
-                  <div className="w-full md:w-full px-3 mb-2 mt-2">
-                    <textarea
-                      className="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-                      name="body"
-                      placeholder="Add a Comment"
-                      value={input}
-                      onChange={handleChange}
-                      required
-                    ></textarea>
-                  </div>
-
-                  <div className="w-full md:w-full flex items-start  px-3">
-                    <div className="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
-                      <BsInfoCircle />
-                      <p className="text-xs pl-1 md:text-sm pt-px">
-                        Join the Conversation.
-                      </p>
-                    </div>
-                    <div className="-mr-1">
-                      <input
-                        type="submit"
-                        className="bg-red-700 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:opacity-90 cursor-pointer"
-                        value="Post Comment"
-                        onClick={handleSubmit}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </form>
-              {/* CARD */}
-              {/* <CommentCard account={account} comment={comments} /> */}
-              {/* <CommentCard account={account} comment={comments} />
-            <CommentCard account={account} comment={comments} /> */}
-            </div>
+            <Comments slug={postId} />
           </div>
         </div>
       </div>

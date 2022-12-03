@@ -1,7 +1,8 @@
 import { useAccount } from 'wagmi';
 import TipsReceiverContent from './TipsReceiverContent';
+import { RiseLoader } from 'react-spinners';
 
-const TipsReceiver = ({ tips }) => {
+const TipsReceiver = ({ tips, isLoading }) => {
   const { address } = useAccount();
 
   const receivedTips = tips.filter((tip) => address === tip.receiverAddress);
@@ -10,7 +11,9 @@ const TipsReceiver = ({ tips }) => {
   return (
     <div className="w-full h-full mx-auto rounded-2xl mt-2 shadow-lg rex2 border border-gray-800">
       <header className="px-5 py-4 border-b border-gray-500">
-        <h2 className="font-semibold text-xl text-black">Total Tips Received:</h2>
+        <h2 className="font-semibold text-xl text-black">
+          Total Tips Received:
+        </h2>
       </header>
       <div className="overflow-x-auto">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 shadow-3xl">
@@ -36,16 +39,23 @@ const TipsReceiver = ({ tips }) => {
               </th>
             </tr>
           </thead>
-          {receivedTips.map((data, index) => (
-            <TipsReceiverContent
-              key={index}
-              senderAddress={data.senderAddress}
-              receiverAddress={data.receiverAddress}
-              amount={data.amount}
-              timestamp={data.timestamp}
-              senderName={data.senderName}
-            />
-          ))}
+          {isLoading && (
+            <div className="text-black text-center flex w-full items-center py-10">
+              <h1 className="mb-6 text-xl">Loading Your Transferred Tips</h1>
+              <RiseLoader size={20} color="#CD1021" />{' '}
+            </div>
+          )}
+          {!isLoading &&
+            receivedTips.map((data, index) => (
+              <TipsReceiverContent
+                key={index}
+                senderAddress={data.senderAddress}
+                receiverAddress={data.receiverAddress}
+                amount={data.amount}
+                timestamp={data.timestamp}
+                senderName={data.senderName}
+              />
+            ))}
         </table>
       </div>
     </div>

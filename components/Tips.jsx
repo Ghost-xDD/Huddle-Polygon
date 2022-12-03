@@ -6,16 +6,18 @@ import { ethers } from 'ethers';
 import { config } from '../constants';
 import { useAccount } from 'wagmi';
 import huddleTipsAbi from '../constants/huddleTips.json';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const Tips = () => {
   const [openTab, setOpenTab] = useState(1);
-
   const [tips, setTips] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
 
   const getAllTips = async () => {
     try {
+      setLoading(true);
       if (window.ethereum) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
@@ -39,9 +41,8 @@ const Tips = () => {
           amount: parseInt(transfers.amount._hex) / 10 ** 18,
         }));
 
-        // console.log(formatTransferredTips);
-
         setTips(formatAllTips);
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -82,14 +83,31 @@ const Tips = () => {
               </a>
             </li>
           </ul>
-          <div className="w-full mt-6">
-            <div className={openTab === 1 ? 'block' : 'hidden'}>
-              <TipsTransfer tips={tips} />
+          {isConnected && (
+            <div className="w-full mt-6">
+              <div className={openTab === 1 ? 'block' : 'hidden'}>
+                <TipsTransfer tips={tips} isLoading={loading} />
+              </div>
+              <div className={openTab === 2 ? 'block' : 'hidden'}>
+                <TipsReceiver tips={tips} isLoading={loading} />
+              </div>
             </div>
-            <div className={openTab === 2 ? 'block' : 'hidden'}>
-              <TipsReceiver tips={tips} />
-            </div>
-          </div>
+          )}
+          {!isConnected && (
+            <section
+              div
+              className="max-w-7xl mt-4 flex gap-20 h-full py-4  mx-auto px-4 sm:px-6 lg:px-8"
+            >
+              <div>
+                <h1 className="text-center w-full mt-10 text-2xl font-bold text-black">
+                  Please Connect Wallet To View Tips
+                </h1>
+                <p>
+                  <ConnectButton />
+                </p>
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>
