@@ -38,7 +38,7 @@ Huddle is a decentralized social media and image sharing platform like pinterest
 
 - Users can choose to mint a post as NFT to their profile by clicking the mint button, just like how pins work on Pinterest
   
-  ![minted nft](https://user-images.githubusercontent.com/42726051/205459991-9d1c50d9-20fb-4f5b-992b-7f43c89dcd63.JPG)
+![minted nft](https://user-images.githubusercontent.com/42726051/205459991-9d1c50d9-20fb-4f5b-992b-7f43c89dcd63.JPG)
 
 - Users can directly send a tip to the post creator's wallet
 
@@ -57,6 +57,15 @@ Huddle is a decentralized social media and image sharing platform like pinterest
 ![my-nfts](https://user-images.githubusercontent.com/42726051/205460373-71d803ef-6f83-4d61-bd88-13c10698c77f.JPG)
 
 ## Transactions Page
+
+- **Tips Transferred**: Users can see the details of all the tips they've sent to any creator on the Huddle platform
+
+![tips transferred](https://user-images.githubusercontent.com/42726051/205461515-361ad295-f88f-4678-83ed-ce4900199f3a.JPG)
+
+- **Tips Received**: Users can also see the details of all the tips they've received on their posts, alongside the sender details
+
+![tips received](https://user-images.githubusercontent.com/42726051/205461776-6525e341-5153-4f95-bf54-078d67b713fe.JPG)
+
 
 
 
