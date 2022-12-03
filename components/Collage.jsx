@@ -48,7 +48,7 @@ const Collage = () => {
   const getImage = async (ipfsURL) => {
     if (!ipfsURL) return;
     ipfsURL = ipfsURL.split('://');
-    return 'https://nftstorage.link/ipfs/' + ipfsURL[1];
+    return 'https://gateway.pinata.cloud/ipfs/' + ipfsURL[1];
   };
 
   return (

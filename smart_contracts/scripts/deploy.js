@@ -28,6 +28,10 @@ const main = async () => {
 // Huddle Tips Contract deployed to: 0xA67843ED2701a0509d8789D2A9f509fE02bfBC3E - verified
 // Huddle Comments Contract deployed to: 0xA88bAB6EA73921fc77eb903d9E3e22028a1787b4 - verified
 
+// Huddle Contract Redeploy to: 0x9EA38BFCC3c3b4E3C1a8FC1d861D05c11Fb49a14
+// Huddle Tips Contract: 0x5031c474Bbea0c5aced442BC250533fb02b66482
+// Huddle Comments Contract: 0x6f9798263B48C42a322cF19363EA1B8B3b2b0824
+
 const runMain = async () => {
   try {
     await main();
