@@ -62,9 +62,7 @@ const Tips = () => {
               <a
                 onClick={() => setOpenTab(1)}
                 className={` ${
-                  openTab === 1
-                    ? 'bg-gradient-to-r from-red-400 to-slate-500 text-white'
-                    : ''
+                  openTab === 1 ? 'bg-slate-500 text-white' : ''
                 } inline-block px-4 py-2 text-black font-bold rounded-xl shadow cursor-pointer`}
               >
                 Tips Transferred
@@ -74,9 +72,7 @@ const Tips = () => {
               <a
                 onClick={() => setOpenTab(2)}
                 className={` ${
-                  openTab === 2
-                    ? 'bg-gradient-to-r from-red-400 to-slate-500 text-white'
-                    : ''
+                  openTab === 2 ? 'bg-slate-500 text-white' : ''
                 } inline-block px-4 py-2 text-black font-bold rounded-xl shadow cursor-pointer`}
               >
                 Tips Received
