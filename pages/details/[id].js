@@ -119,7 +119,10 @@ const Details = () => {
       signer
     );
 
-    const mint = await nftContract.mintNFT(address, tokenUri);
+    const mint = await nftContract.mintNFT(address, tokenUri, {
+      maxFeePerGas: '30000000000',
+      maxPriorityFeePerGas: '30000000000',
+    });
     const receipt = await mint.wait();
     console.log(receipt);
 

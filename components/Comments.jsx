@@ -32,7 +32,7 @@ const Comments = ({ slug }) => {
       ...comment,
     }));
 
-    console.log(formatComments);
+    // console.log(formatComments);
     setCommentList(formatComments);
     setLoading(false);
   };
@@ -50,18 +50,19 @@ const Comments = ({ slug }) => {
     );
 
     const sendComment = await commentsContract.addComment(slug, message, {
-      maxFeePerGas: '10000000000',
-      maxPriorityFeePerGas: '10000000000',
+      maxFeePerGas: '30000000000',
+      maxPriorityFeePerGas: '30000000000',
     });
     const tx = await sendComment.wait();
     console.log(tx);
+    setMessage('');
   };
 
   useEffect(() => {
     if (slug) {
       getComments();
     }
-  }, [slug]);
+  }, [slug, addComments]);
 
   return (
     <div className=" items-center justify-center mb-4 mt-4 max-w-lg">
