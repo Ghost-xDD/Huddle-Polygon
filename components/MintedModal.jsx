@@ -24,7 +24,7 @@ const MintedModal = ({ txHash, openMintModal, handleOnClose }) => {
 
           <div className="fixed inset-0 overflow-y-auto">
             <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-            
+
             <div className="flex min-h-full items-center justify-center p-4 text-center">
               <Transition.Child
                 as={Fragment}
@@ -44,8 +44,8 @@ const MintedModal = ({ txHash, openMintModal, handleOnClose }) => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500 font-serif">
-                     Post has been minted to your profile. You can now proceed to verify your NFT transaction on
-                      Polygonscan
+                      Post has been minted to your profile. You can now proceed
+                      to verify your NFT transaction on Polygonscan
                     </p>
                   </div>
 

@@ -55,10 +55,6 @@ const TipModal = ({ visible, onClose, authorName, tipAddress }) => {
     });
   };
 
-  useEffect(() => {
-    if (!window.ethereum) return;
-  }, []);
-
   if (!visible) return null;
 
   const handleOnClose = (e) => {
