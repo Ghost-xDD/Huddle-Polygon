@@ -157,8 +157,8 @@ const Details = () => {
 
           {/* comments side */}
 
-          <div className="flex flex-col rex2 px-0 py-0 md:px-6 md:py-4 sm:p-4">
-            <h1 className="text-3xl tracking-widest italic font-bold py-4 px-4">
+          <div className="flex flex-col rex2 px-6 py-0 md:px-6 md:py-4 mt-6 md:mt-0">
+            <h1 className="text-3xl tracking-widest italic font-bold pt-4 py-2 px-2">
               {postTitle}
               <span role="img" aria-label="sheep">
                 🤖
@@ -216,7 +216,7 @@ const Details = () => {
             />
 
             <div className="mt-2">
-              <p className="italic text-gray-500 w-[500px]">{quote}</p>
+              <p className="italic text-gray-500 w-full md:w-[500px]">{quote}</p>
             </div>
 
             <div className="py-4">
