@@ -38,7 +38,7 @@ https://www.youtube.com/watch?v=37us_8xECcM
 - Solidity for the smart contracts
 - Ethers.js & Hardhat for testing & deploying smart contracts
 
-NOTE: Some images might take up to a minute or two to be loaded from IPFS. This is due to the public gateways being used.
+NOTE: Some images might take up to a minute or two to be loaded from IPFS. This is due to the public gateways being used. Refreshing the page should fix this
 
 ## Verified Smart Contracts Links (Polygon Mumbai)
 - Huddle (ERC 721): https://mumbai.polygonscan.com/address/0x9EA38BFCC3c3b4E3C1a8FC1d861D05c11Fb49a14
