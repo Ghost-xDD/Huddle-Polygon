@@ -1,4 +1,8 @@
+![huddle-logo](https://user-images.githubusercontent.com/42726051/205498904-bdc7f1c4-f315-4b0a-b4fb-0930e36e0c90.JPG)
+
 # Huddle (Decentralized Pinterest)
+
+## A Polygon Bootcamp Hackathon Project
 
 Huddle is a decentralized social media and image sharing platform like pinterest / unsplash where users can find and share ideas to spark inspiration, and interact with a community of like minded people.
 
@@ -21,6 +25,10 @@ Huddle is a decentralized social media and image sharing platform like pinterest
 
 - User fully owns their tips. They don't have to pay any percentage
 
+## Demo Video(3 mins) 
+https://www.youtube.com/watch?v=37us_8xECcM
+
+
 ## Tech Stack
 - React (Next.js) & TailwindCSS for the frontend
 - NFT.storage for pinning creator images and it's JSON metadata to IPFS
@@ -29,6 +37,8 @@ Huddle is a decentralized social media and image sharing platform like pinterest
 - Polygon Mumbai Testnet for deployment of smart contracts powering the Dapp
 - Solidity for the smart contracts
 - Ethers.js & Hardhat for testing & deploying smart contracts
+
+NOTE: Some images might take up to a minute or two to be loaded from IPFS. This is due to the public gateways being used.
 
 ## Verified Smart Contracts Links (Polygon Mumbai)
 - Huddle (ERC 721): https://mumbai.polygonscan.com/address/0x9EA38BFCC3c3b4E3C1a8FC1d861D05c11Fb49a14
@@ -89,6 +99,10 @@ Huddle is a decentralized social media and image sharing platform like pinterest
 
 ![tips received](https://user-images.githubusercontent.com/42726051/205461776-6525e341-5153-4f95-bf54-078d67b713fe.JPG)
 
+## Transfer NFT Ownership(Uncompleted)
+
+## Team
+- Ademola Adebowale
 
 
 
