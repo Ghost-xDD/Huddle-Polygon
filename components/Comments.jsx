@@ -10,11 +10,20 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Comments = ({ slug }) => {
+  const { isConnected } = useAccount();
   const [message, setMessage] = useState('');
   const [commentList, setCommentList] = useState([]);
   const [loading, setLoading] = useState(false);
 
   console.log(slug);
+
+  const notify = (e) => {
+    e.preventDefault();
+
+    toast.error('Please connect a Compatible Web3 Wallet to add comments', {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
 
   const getComments = async () => {
     setLoading(true);
@@ -102,15 +111,27 @@ const Comments = ({ slug }) => {
                 Join the Conversation.
               </p>
             </div>
-            <div className="-mr-1">
-              <input
-                type="submit"
-                className="bg-red-700 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:opacity-90 cursor-pointer"
-                value="Post Comment"
-                disabled={!message}
-                onClick={addComments}
-              />
-            </div>
+            {isConnected && (
+              <div className="-mr-1">
+                <input
+                  type="submit"
+                  className="bg-red-700 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:opacity-90 cursor-pointer"
+                  value="Post Comment"
+                  disabled={!message}
+                  onClick={addComments}
+                />
+              </div>
+            )}
+            {!isConnected && (
+              <div className="-mr-1">
+                <input
+                  type="submit"
+                  className="bg-red-700 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:opacity-90 cursor-pointer"
+                  value="Post Comment"
+                  onClick={notify}
+                />
+              </div>
+            )}
           </div>
           <ToastContainer autoClose={6000} />
         </div>
