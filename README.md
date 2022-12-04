@@ -56,7 +56,8 @@ Huddle is a decentralized social media and image sharing platform like pinterest
 ![post details page](https://user-images.githubusercontent.com/42726051/205459500-69f03100-5b43-4398-9c5d-076eea6de5c4.JPG)
 - Users can add comments under a specific post and interact with other members of the community
 
-![comments](https://user-images.githubusercontent.com/42726051/205459881-ca0b983b-8b14-461d-9fef-9abede1a821f.JPG)
+![comments2](https://user-images.githubusercontent.com/42726051/205481932-1235425d-2772-4a57-a4f9-f32b5741d26a.JPG)
+
 
 - Users can choose to mint a post as NFT to their profile by clicking the mint button, just like how pins work on Pinterest
   
