@@ -172,7 +172,7 @@ const Details = () => {
                 <BsShare className="hover:text-red-900 font-bold" />
               </div>
 
-              <div className="mr-40" />
+              <div className="mr-0 sm:mr-40" />
 
               <div className="flex items-center">
                 <h3 className="flex items-center font-bold cursor-pointer pb-2">

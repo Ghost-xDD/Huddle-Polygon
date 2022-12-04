@@ -1,7 +1,7 @@
 const formatAddress = (address) => {
   let addressFormatted;
   if (address) {
-    addressFormatted = address.slice(0, -10);
+    addressFormatted = address.slice(0, -16);
   }
   return addressFormatted;
 };

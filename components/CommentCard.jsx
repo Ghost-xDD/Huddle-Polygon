@@ -1,8 +1,17 @@
 import { useEffect, useState } from 'react';
-import formatAddress from '../utils/formatAddress';
 import getAvatar from '../utils/getAvatars';
 import Image from 'next/image';
 import TimeAgo from 'react-timeago';
+
+const formatAddresses = (address) => {
+  let addressFormatted;
+  if (address) {
+    addressFormatted = `${address.slice(0, 5)}...${address.slice(
+      address.length - 4
+    )}`;
+  }
+  return addressFormatted;
+};
 
 const CommentCard = ({ message, sender, timestamp }) => {
   const [avatar, setAvatar] = useState('');
@@ -26,7 +35,7 @@ const CommentCard = ({ message, sender, timestamp }) => {
             />
           </div>
           <div className="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
-            <strong>{formatAddress(sender)}</strong>{' '}
+            <strong>{formatAddresses(sender)}</strong>{' '}
             <span className="text-xs text-gray-400">
               <TimeAgo date={formatted} />
             </span>
