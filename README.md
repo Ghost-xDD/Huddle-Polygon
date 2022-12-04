@@ -99,7 +99,6 @@ NOTE: Some images might take up to a minute or two to be loaded from IPFS. This 
 
 ![tips received](https://user-images.githubusercontent.com/42726051/205461776-6525e341-5153-4f95-bf54-078d67b713fe.JPG)
 
-## Transfer NFT Ownership(Uncompleted)
 
 ## Team
 - Ademola Adebowale
