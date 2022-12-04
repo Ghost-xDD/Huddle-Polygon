@@ -146,12 +146,12 @@ const Details = () => {
           <meta name="description" content="Image Details" />
         </Head>
 
-        <div className="block md:flex gap-14 mt-10">
+        <div className="block md:flex gap-14 mt-2 md:mt-10">
           <div>
             <img
               src={image}
-              alt=""
-              className="w-full md:w-[650px] h-[70vh] rex rounded-[20px]"
+              alt="image-detail"
+              className="w-[480px] h-[200px] md:w-[650px] md:h-[70vh] rex rounded-[20px]"
             />
           </div>
 
@@ -165,12 +165,14 @@ const Details = () => {
               </span>
             </h1>
             {/* comments header */}
-            <div className="mt-1 flex justify-between ">
+            <div className="mt-1 py-2 md:py-0 flex justify-between ">
               <div className="flex gap-6 text-2xl cursor-pointer">
                 <BsThreeDots className="hover:text-red-900 font-bold" />
                 <FiUpload className="hover:text-red-900 font-bold" />
                 <BsShare className="hover:text-red-900 font-bold" />
               </div>
+
+              <div className='ml-2 sm:hidden'/> 
 
               <div className="mr-0 sm:mr-40" />
 
@@ -199,7 +201,7 @@ const Details = () => {
                     Mint
                   </button>
                 )}
-                <ToastContainer autoClose={1000} />
+                <ToastContainer autoClose={6000} />
               </div>
             </div>
 
@@ -216,7 +218,9 @@ const Details = () => {
             />
 
             <div className="mt-2">
-              <p className="italic text-gray-500 w-full md:w-[500px]">{quote}</p>
+              <p className="italic text-gray-500 w-full md:w-[500px]">
+                {quote}
+              </p>
             </div>
 
             <div className="py-4">

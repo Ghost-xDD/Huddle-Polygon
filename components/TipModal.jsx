@@ -79,58 +79,65 @@ const TipModal = ({ visible, onClose, authorName, tipAddress }) => {
       if (window.ethereum) {
         e.preventDefault();
 
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
+        if (senderAddress === receiverAddress) {
+          toast.info("Sorry Boss! You can't tip yourself", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          return;
+        } else {
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          const signer = provider.getSigner();
 
-        const tipContract = new ethers.Contract(
-          config.huddleTipsAddress,
-          huddleTipsAbi,
-          signer
-        );
+          const tipContract = new ethers.Contract(
+            config.huddleTipsAddress,
+            huddleTipsAbi,
+            signer
+          );
 
-        const parsedAmount = ethers.utils.parseEther(amount);
+          const parsedAmount = ethers.utils.parseEther(amount);
 
-        // setIsLoading(true);
+          // setIsLoading(true);
 
-        await window.ethereum.request({
-          method: 'eth_sendTransaction',
-          params: [
+          await window.ethereum.request({
+            method: 'eth_sendTransaction',
+            params: [
+              {
+                from: senderAddress,
+                to: receiverAddress,
+                maxFeePerGas: '1000000000',
+                maxPriorityFeePerGas: '1000000000',
+                value: parsedAmount._hex,
+              },
+            ],
+          });
+
+          setIsLoading(true);
+
+          const transactionHash = await tipContract.addToBlockchain(
+            receiverAddress,
+            parsedAmount,
+            senderName,
+            receiverName,
             {
-              from: senderAddress,
-              to: receiverAddress,
-              maxFeePerGas: '1000000000',
-              maxPriorityFeePerGas: '1000000000',
-              value: parsedAmount._hex,
-            },
-          ],
-        });
+              maxFeePerGas: '30000000000',
+              maxPriorityFeePerGas: '30000000000',
+            }
+          );
 
-        setIsLoading(true);
+          console.log(`Loading - ${transactionHash.hash}`);
+          await transactionHash.wait();
+          console.log(`Success - ${transactionHash.hash}`);
+          setHash(transactionHash.hash);
 
-        const transactionHash = await tipContract.addToBlockchain(
-          receiverAddress,
-          parsedAmount,
-          senderName,
-          receiverName,
-          {
-            maxFeePerGas: '30000000000',
-            maxPriorityFeePerGas: '30000000000',
-          }
-        );
+          const tipsCount = await tipContract.getTransactionCount();
 
-        console.log(`Loading - ${transactionHash.hash}`);
-        await transactionHash.wait();
-        console.log(`Success - ${transactionHash.hash}`);
-        setHash(transactionHash.hash);
-
-        const tipsCount = await tipContract.getTransactionCount();
-
-        setTipsCount(tipsCount.toNumber());
-        setIsLoading(false);
-        setReceipt(true);
-        setAmount('');
-        setSenderName('');
-        // window.location.reload();
+          setTipsCount(tipsCount.toNumber());
+          setIsLoading(false);
+          setReceipt(true);
+          setAmount('');
+          setSenderName('');
+          // window.location.reload();
+        }
       }
     } catch (error) {
       console.log(error);
@@ -235,7 +242,10 @@ const TipModal = ({ visible, onClose, authorName, tipAddress }) => {
             </div>
             <div className="text-center py-4">Transaction Receipt:</div>
             <div className='className="px-5 text-center rounded-2xl mx-[180px] py-2 bg-red-700 cursor-pointer text-white rounded"'>
-              <a href={'https://mumbai.polygonscan.com/tx/' + hash}>
+              <a
+                target="_blank"
+                href={'https://mumbai.polygonscan.com/tx/' + hash}
+              >
                 View Receipt
               </a>
             </div>

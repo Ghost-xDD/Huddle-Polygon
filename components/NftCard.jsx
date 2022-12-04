@@ -5,6 +5,8 @@ import { useAccount } from 'wagmi';
 import huddleABI from '../constants/huddleABI.json';
 import { motion } from 'framer-motion';
 import TransferNftModal from '../components/TransferNftModal';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const formatAddresses = (address) => {
   let addressFormatted;
@@ -24,6 +26,17 @@ const NftCard = ({ image, title, tokenId, contractAddress }) => {
   // const huddleContract = config.huddleAddress;
 
   const handleOnClose = () => setShowModal(false);
+
+  const notify = (e) => {
+    e.preventDefault();
+
+    toast.info(
+      "Didn't have enough time to implement feature. Would continue after hackathon",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  };
 
   return (
     <div
@@ -50,7 +63,7 @@ const NftCard = ({ image, title, tokenId, contractAddress }) => {
               </p>
               <motion.button
                 className=" transition-all duration-500 hover:opacity-80  right-0 mt-2 text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xl text-sm ml-2  py-2 "
-                onClick={() => setShowModal(true)}
+                onClick={notify}
               >
                 Transfer NFT
               </motion.button>
@@ -61,6 +74,7 @@ const NftCard = ({ image, title, tokenId, contractAddress }) => {
                 formattedToken={formattedToken}
               />
             </div>
+            <ToastContainer autoClose={6000} />
 
             {/* <h6 className="text-md">Charles</h6> */}
             {/* <button className=" transition-all duration-500 hover:opacity-80 mr-4 right-0 mt-2 text-white bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-xl text-sm px-4 py-2 ">

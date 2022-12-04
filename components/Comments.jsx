@@ -6,6 +6,8 @@ import { BsInfoCircle } from 'react-icons/bs';
 import huddleCommentsAbi from '../constants/huddleCommentsABI.json';
 import { RiseLoader } from 'react-spinners';
 import CommentCard from './CommentCard';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Comments = ({ slug }) => {
   const [message, setMessage] = useState('');
@@ -50,14 +52,23 @@ const Comments = ({ slug }) => {
       signer
     );
 
+    const commentNotification = toast.loading('Sending your comment...');
+
     const sendComment = await commentsContract.addComment(slug, message, {
       maxFeePerGas: '30000000000',
       maxPriorityFeePerGas: '30000000000',
     });
     const tx = await sendComment.wait();
     console.log(tx);
+
+    toast.update(commentNotification, {
+      render: 'Comment posted',
+      type: 'success',
+      isLoading: false,
+    });
+
     setMessage('');
-    window.location.reload;
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -101,6 +112,7 @@ const Comments = ({ slug }) => {
               />
             </div>
           </div>
+          <ToastContainer autoClose={6000} />
         </div>
       </form>
       {loading && (
