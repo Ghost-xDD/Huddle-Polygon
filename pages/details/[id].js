@@ -140,32 +140,32 @@ const Details = () => {
 
   return (
     mounted && (
-      <div className="max-w-7xl mt-4  h-full mx-auto  sm: lg:">
+      <div className="max-w-7xl  mt-4  h-full mx-auto  sm: lg:">
         <Head>
           <title>Image Details | Huddle</title>
           <meta name="description" content="Image Details" />
         </Head>
 
-        <div className="flex gap-14 mt-10">
+        <div className="block md:flex gap-14 mt-10">
           <div>
             <img
               src={image}
               alt=""
-              className="w-[650px] h-[70vh] rex rounded-[20px]"
+              className="w-full md:w-[650px] h-[70vh] rex rounded-[20px]"
             />
           </div>
 
           {/* comments side */}
 
-          <div className="flex flex-col rex2 px-6 py-4">
-            <h1 className="text-3xl tracking-widest italic font-bold py-4 ">
+          <div className="flex flex-col rex2 px-0 py-0 md:px-6 md:py-4 sm:p-4">
+            <h1 className="text-3xl tracking-widest italic font-bold py-4 px-4">
               {postTitle}
               <span role="img" aria-label="sheep">
                 🤖
               </span>
             </h1>
             {/* comments header */}
-            <div className="mt-1 flex justify-between">
+            <div className="mt-1 flex justify-between ">
               <div className="flex gap-6 text-2xl cursor-pointer">
                 <BsThreeDots className="hover:text-red-900 font-bold" />
                 <FiUpload className="hover:text-red-900 font-bold" />

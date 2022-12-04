@@ -57,9 +57,9 @@ const TipsReceiver = ({ tips, isLoading }) => {
               />
             ))}
 
-          {/* <div className={!receivedTips ? 'hidden' : 'block'}>
+          <div className={!receivedTips ? 'hidden' : 'block'}>
             <h1>You currently have no received Tips! </h1>
-          </div> */}
+          </div>
         </table>
       </div>
     </div>

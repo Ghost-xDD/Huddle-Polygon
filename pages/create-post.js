@@ -75,7 +75,7 @@ const CreatePost = () => {
       <>
         {/* <ToastContainer draggable={false} transition={Zoom} autoClose={8000} /> */}
         {isConnected && (
-          <div className="max-w-7xl mt-4 flex gap-20 h-full py-4 my-24 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mt-4 block md:flex gap-20 h-full py-4 my-24 mx-auto px-4 sm:px-6 lg:px-8">
             <Head>
               <title>Create Post | Huddle</title>
               <meta
@@ -91,7 +91,7 @@ const CreatePost = () => {
                 className="w-[650px] h-[70vh] pb-2 mt-10 rounded-[20px]"
               />
             ) : (
-              <div className="flex justify-center items-center w-[650px] h-[70vh]">
+              <div className="flex justify-center items-center  md:w-[650px] h-[70vh]">
                 <label
                   htmlFor="dropzone-file"
                   className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -116,10 +116,13 @@ const CreatePost = () => {
                       <span className="font-semibold">Preview Image</span>
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                      PNG or JPG
+                      PNG, JPG or GIF
+                    </p>
+                    <p className="text-md text-red-500 dark:text-gray-400">
+                      Larger Images might take longer to load from IPFS
                     </p>
                     <p className="text-red-900 text-2xl font-bold dark:text-red-900">
-                      Max Upload Size: 200px
+                      Recommended Upload Size: 200px
                     </p>
                   </div>
                 </label>
@@ -216,6 +219,7 @@ const CreatePost = () => {
                       <option value="car">Cars</option>
                       <option value="fashion">Fashion</option>
                       <option value="productivity">Productivity</option>
+                      <option value="others">Others</option>
                     </select>
                   </div>
 

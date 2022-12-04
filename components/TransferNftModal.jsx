@@ -86,7 +86,7 @@ const TransferNftModal = ({ visible, onClose, tokenId, formattedToken }) => {
               onChange={(e) => setRecipientAddress(e.target.value)}
             />
             <div className="text-center">
-              <button className="px-5 py-2 bg-red-700 text-white rounded">
+              <button disabled className="px-5 py-2 bg-red-700 opacity:80 text-white rounded">
                 Transfer
               </button>
             </div>
